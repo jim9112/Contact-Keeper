@@ -17,8 +17,8 @@ const ContactState = props => {
         contacts: [
             {
                 id: 1,
-                name: 'Jill Johnson',
-                email: 'jill@gmail.com',
+                name: 'John Snow',
+                email: 'John@gmail.com',
                 phone: '111-111-1111',
                 type: 'personal'
             },
@@ -35,11 +35,11 @@ const ContactState = props => {
                 email: 'Harry@gmail.com',
                 phone: '333-333-3333',
                 type: 'professional'
-            },
+            }
         ]
     };
 
-    const [state, dispatch] = useReducer(contactReducer, initialState)
+    const [state, dispatch] = useReducer(contactReducer, initialState);
 
     // Add contact
 
@@ -56,13 +56,13 @@ const ContactState = props => {
     // Clear filter
 
     return(
-        <ContactContext.Provider>
+        <ContactContext.Provider
             value={{
                 contacts: state.contacts
-            }}
+            }}>
             { props.children}
         </ContactContext.Provider>
     );
-}
+};
 
 export default ContactState;

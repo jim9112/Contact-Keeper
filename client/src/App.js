@@ -22,7 +22,7 @@ const App = () => {
           </div>
         </Fragment>
       </Router>
-    </ContactState>
+      </ContactState>
     
       
   );
