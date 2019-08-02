@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ContactItem = ({ contact }) => {
     const { id, name, email, phone, type } = contact;
@@ -19,8 +20,16 @@ const ContactItem = ({ contact }) => {
                     <i className="fas fa-phone"></i> {phone}
                 </li>)}
             </ul>
+            <p>
+                <button className="btn btn-dark small">Edit</button>
+                <button className="btn btn-danger small">Delete</button>
+            </p>
         </div>
     )
+}
+
+ContactItem.propTypes = {
+    contact: PropTypes.object.isRequired
 }
 
 export default ContactItem
