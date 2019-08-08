@@ -6,7 +6,7 @@ const ContactFilter = () => {
     const contactContext = useContext(ContactContext);
     const text = useRef('');
 
-    const { filterContacts, clearFilter, filtered } = contactContext
+    const { filterContacts, clearFilter, filtered } = contactContext;
 
     // set text value of search field to empty when filter changes to null
     useEffect(() => {
@@ -18,11 +18,11 @@ const ContactFilter = () => {
     // call filtercontact function on change
     const onChange = e => {
         if(text.current.value !== '') {
-            filterContacts(e.target.value)
+            filterContacts(e.target.value);
         } else {
             clearFilter();
         }
-    }
+    };
 
     return (
         <form>
