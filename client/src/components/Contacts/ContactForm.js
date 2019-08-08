@@ -7,6 +7,8 @@ const ContactForm = () => {
 
     const { addContact, current, clearCurrent, updateContact } = contactContext;
 
+    
+    // fills form with current contact data, if no current sets empty/default
     useEffect(() => {
         if(current !== null) {
             setContact(current)
@@ -31,6 +33,7 @@ const ContactForm = () => {
     
     const onChange = e => setContact({ ...contact, [e.target.name]: e.target.value});
 
+    // handle button submit cases (add vs update)
     const onSubmit = e => {
         e.preventDefault();
         if(current === null) {
@@ -41,6 +44,7 @@ const ContactForm = () => {
         clearAll();
     };
 
+    // Clear all form fields 
     const clearAll = () => {
         clearCurrent();
     }
