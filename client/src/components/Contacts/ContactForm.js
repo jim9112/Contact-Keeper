@@ -2,54 +2,53 @@ import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactForm = () => {
-    const contactContext = useContext(ContactContext);
+  const contactContext = useContext(ContactContext);
 
 
-    const { addContact, current, clearCurrent, updateContact } = contactContext;
+  const { addContact, current, clearCurrent, updateContact } = contactContext;
 
-    
-    // fills form with current contact data, if no current sets empty/default
-    useEffect(() => {
-        if(current !== null) {
-            setContact(current)
-        } else {
-            setContact({
-                name: '',
-                email: '',
-                phone: '',
-                type: 'personal'
-            });
-        }
-    }, [contactContext, current]);
-    
-    const [contact, setContact] = useState({
+  // fills form with current contact data, if no current sets empty/default
+  useEffect(() => {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact({
         name: '',
         email: '',
         phone: '',
-        type: 'personal'
-    });
-
-    const {name, email, phone, type} = contact;
-    
-    const onChange = e => setContact({ ...contact, [e.target.name]: e.target.value});
-
-    // handle button submit cases (add vs update)
-    const onSubmit = e => {
-        e.preventDefault();
-        if(current === null) {
-            addContact(contact);
-        } else {
-            updateContact(contact);
-        }
-        clearAll();
-    };
-
-    // Clear all form fields 
-    const clearAll = () => {
-        clearCurrent();
+        type: 'personal',
+      });
     }
-    return (
-        <form onSubmit={onSubmit}>
+  }, [contactContext, current]);
+
+  const [contact, setContact] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    type: 'personal',
+  });
+
+  const {name, email, phone, type } = contact;
+
+  const onChange = e => setContact({ ...contact, [e.target.name]: e.target.value});
+
+  // handle button submit cases (add vs update)
+  const onSubmit = e => {
+    e.preventDefault();
+    if (current === null) {
+      addContact(contact);
+    } else {
+      updateContact(contact);
+    }
+    clearAll();
+  };
+
+  // Clear all form fields
+  const clearAll = () => {
+    clearCurrent();
+  };
+  return (
+    <form onSubmit={onSubmit}>
             <h2 className="text-primary">{ current ? 'Edit Contact' : 'Add Contact'}</h2>
             <input 
                 type="text"
